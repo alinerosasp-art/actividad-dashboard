@@ -27,6 +27,41 @@ async function cargarDatos() {
     dibujarGraficoD3(datos);
 }
 
+function dibujarGraficoGoogle(datos) {
+
+    const tabla = new google.visualization.DataTable();
+
+    tabla.addColumn('string', 'Producto');
+    tabla.addColumn('number', 'Ventas');
+
+    datos.forEach(item => {
+
+        tabla.addRow([
+            item.producto + ' ' + item.mes,
+            item.ventas
+        ]);
+
+    });
+
+    const opciones = {
+        title: 'Ventas por Producto',
+        height: 500,
+        legend: { position: 'top' },
+        animation: {
+            startup: true,
+            duration: 1000,
+            easing: 'out'
+        }
+    };
+
+    const chart = new google.visualization.ColumnChart(
+        document.getElementById('graficoGoogle')
+    );
+
+    chart.draw(tabla, opciones);
+
+}
+
 function dibujarGraficoD3(datos) {
 
     d3.select("#graficoD3").selectAll("*").remove();
@@ -54,6 +89,14 @@ function dibujarGraficoD3(datos) {
     const colores = d3.scaleOrdinal()
         .domain(["Smartphone A", "Smartphone B", "Tablet X"])
         .range(["#4285F4", "#EA4335", "#34A853"]);
+
+    svg.append("text")
+        .attr("x", width / 2)
+        .attr("y", 20)
+        .attr("text-anchor", "middle")
+        .style("font-size", "18px")
+        .style("font-weight", "bold")
+        .text("Análisis Multidimensional de Ventas");
 
     svg.append("g")
         .attr("transform",
@@ -125,5 +168,27 @@ Ventas: ${d.ventas}
 Ingresos: ${d.ingresos}
 Precio: ${d.precio}`
         );
+
+const leyenda = [
+    { nombre: "Smartphone A", color: "#4285F4" },
+    { nombre: "Smartphone B", color: "#EA4335" },
+    { nombre: "Tablet X", color: "#34A853" }
+];
+
+    leyenda.forEach((item, i) => {
+
+        svg.append("circle")
+            .attr("cx", 700)
+            .attr("cy", 50 + i * 25)
+            .attr("r", 8)
+            .attr("fill", item.color);
+
+        svg.append("text")
+            .attr("x", 720)
+            .attr("y", 55 + i * 25)
+            .text(item.nombre)
+            .style("font-size", "12px");
+
+    });
 
 }
