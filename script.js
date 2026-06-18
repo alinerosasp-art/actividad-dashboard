@@ -68,7 +68,7 @@ function dibujarGraficoD3(datos) {
 
     const svg = d3.select("#graficoD3");
 
-    const width = 900;
+    const width = 700;
     const height = 500;
 
     const margin = {
