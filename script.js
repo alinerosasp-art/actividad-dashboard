@@ -45,8 +45,8 @@ function dibujarGraficoGoogle(datos) {
 
 const opciones = {
     title: 'Ventas por Producto',
-    width: 600,
-    height: 500,
+    width: 500,
+    height: 450,
     legend: { position: 'top' },
     animation: {
         startup: true,
