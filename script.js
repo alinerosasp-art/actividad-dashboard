@@ -43,16 +43,17 @@ function dibujarGraficoGoogle(datos) {
 
     });
 
-    const opciones = {
-        title: 'Ventas por Producto',
-        height: 500,
-        legend: { position: 'top' },
-        animation: {
-            startup: true,
-            duration: 1000,
-            easing: 'out'
-        }
-    };
+const opciones = {
+    title: 'Ventas por Producto',
+    width: 600,
+    height: 500,
+    legend: { position: 'top' },
+    animation: {
+        startup: true,
+        duration: 1000,
+        easing: 'out'
+    }
+};
 
     const chart = new google.visualization.ColumnChart(
         document.getElementById('graficoGoogle')
@@ -68,7 +69,7 @@ function dibujarGraficoD3(datos) {
 
     const svg = d3.select("#graficoD3");
 
-    const width = 700;
+    const width = 600;
     const height = 500;
 
     const margin = {
