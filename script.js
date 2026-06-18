@@ -45,8 +45,7 @@ function dibujarGraficoGoogle(datos) {
 
 const opciones = {
     title: 'Ventas por Producto',
-    width: 500,
-    height: 450,
+    height: 500,
     legend: { position: 'top' },
     animation: {
         startup: true,
@@ -69,7 +68,7 @@ function dibujarGraficoD3(datos) {
 
     const svg = d3.select("#graficoD3");
 
-    const width = 600;
+    const width = 700;
     const height = 500;
 
     const margin = {
